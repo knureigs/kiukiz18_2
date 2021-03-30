@@ -4,9 +4,38 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <script>
+        // console.log(window);
+        // console.dir(window);
+
+        function docWrite() {
+            //document.write("<h3>Example!!!!!</h3>");
+            // let studMarks = document.body.children[0];
+            let studMarks = document.getElementById("studMarks");
+            let rows = studMarks.rows;
+            let avg = 0;
+            let sum = 0;
+            let curBestMark = 0;
+            let curBestFIO;
+            for(let i=1; i<rows.length; i++){
+                if(curBestMark<+rows[i].cells[1].innerText) {
+                    curBestMark = +rows[i].cells[1].innerText;
+                    curBestFIO = rows[i].cells[0].innerText;
+                }
+                // sum += +rows[i].cells[1].innerText;
+
+                // console.log(rows[i].cells[1].innerText);
+            }
+            // let studField = document.getElementById("bestStudFIO");
+            // studField.value = curBestFIO;
+            document.getElementById("bestStudFIO").value = curBestFIO;
+            console.log(curBestFIO);
+            // console.log(sum/(rows.length-1));
+        }
+    </script>
 </head>
 <body>
-    <table border="1">
+    <table border="1" id="studMarks">
         <tr>
             <th>FIO</th>
             <th>Score</th>
@@ -19,6 +48,22 @@
             <td>Petrov</td>
             <td>90</td>
         </tr>
+        <tr>
+            <td>Sidorova</td>
+            <td>60</td>
+        </tr>
     </table>
+    <input type="text" name="bestStudFIO" id="bestStudFIO">
+    <!-- <input type="button" value="Get!" onclick="console.log('windoxfgdfgdfgdw');"> -->
+    <input type="button" value="Get!" onclick="docWrite();">
+    <script>
+        document.write("<h3>Example</h3>");
+        // if(confirm("Вам есть 18?")) {
+        //     alert("Вам " + prompt("Укажите точный возраст") + " лет");
+        // }
+        // else {
+        //     alert("Error!!!!");
+        // }
+    </script>
 </body>
 </html>
